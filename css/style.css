@@ -299,27 +299,15 @@ h1, h2, h3, h4 {
    -------------------------------------------------------------------------- */
 
 .hero {
-  background: var(--gradient-hero);
+  background: var(--navy-deep);
   color: var(--text-light);
   position: relative;
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(600px 300px at 85% 10%, rgba(0, 229, 255, 0.12), transparent 60%),
-    radial-gradient(500px 260px at 10% 90%, rgba(255, 46, 159, 0.12), transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Hero carousel */
+/* Hero carousel — banners de imagen */
 .hero-slide {
   display: none;
-  padding: 64px 0 88px;
   position: relative;
   z-index: 1;
 }
@@ -328,43 +316,12 @@ h1, h2, h3, h4 {
   display: block;
 }
 
-.hero-slide .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 28px;
-}
-
-.hero-logo {
-  max-width: 300px;
-  width: 60%;
-}
-
-.hero-slide h1 {
-  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
-  max-width: 780px;
-}
-
-.hero-slide h1 span {
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-slide p {
-  max-width: 560px;
-  font-size: 1.1rem;
-  opacity: 0.85;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  margin-top: 8px;
+.hero-banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2000 / 900;
+  object-fit: cover;
 }
 
 .hero-arrow {
@@ -466,36 +423,23 @@ h1, h2, h3, h4 {
 }
 
 .card-thumb {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 16px;
-  border-radius: var(--radius-md);
-  background: var(--gradient-brand);
+  width: 128px;
+  height: 128px;
+  margin: 0 auto 18px;
+  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(123, 47, 247, 0.25);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  padding: 12px;
 }
 
-.card-thumb svg {
-  width: 32px;
-  height: 32px;
-}
-
-.ph-tag {
-  position: absolute;
-  bottom: -8px;
-  right: -6px;
-  font-family: var(--font-heading);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  background: var(--navy-deep);
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  padding: 1px 6px;
-  border-radius: 5px;
-  text-transform: uppercase;
+.card-thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .card h3 {
@@ -887,6 +831,151 @@ h1, h2, h3, h4 {
 .prose + .prose { margin-top: 56px; }
 
 .guide-section:nth-of-type(even) { background: #FFFFFF; }
+
+/* --------------------------------------------------------------------------
+   Quiénes somos — historia editorial
+   -------------------------------------------------------------------------- */
+
+.story {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.story p {
+  margin-bottom: 22px;
+  color: var(--text-dark);
+  opacity: 0.85;
+}
+
+.story-lede {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 1 !important;
+  margin-bottom: 32px !important;
+  color: var(--text-dark);
+}
+
+.story-beat {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--violet);
+  opacity: 1 !important;
+  margin: 36px 0 !important;
+}
+
+.story-list {
+  text-align: center;
+  margin: 36px 0;
+}
+
+.story-list p {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: var(--text-dark);
+  opacity: 0.9;
+  margin-bottom: 6px;
+}
+
+.story-quote {
+  position: relative;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: var(--text-dark);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 40px 0 !important;
+  padding: 0 12px;
+}
+
+.story-closing {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.1rem !important;
+  line-height: 1.7;
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+  margin-top: 36px !important;
+}
+
+.story-final {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.8rem;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 36px 0 8px !important;
+}
+
+.story-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 auto 48px;
+  max-width: 640px;
+}
+
+.story-divider::before,
+.story-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(107, 107, 133, 0.25);
+}
+
+.story-divider svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Nuestra Promesa */
+.promise-card {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  background: #17172E;
+  border: 1px solid rgba(255, 210, 63, 0.3);
+  border-radius: var(--radius-md);
+  padding: 48px 36px;
+}
+
+.promise-card .eyebrow { color: var(--gold); }
+
+.promise-card h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  margin-bottom: 24px;
+}
+
+.promise-card p {
+  color: var(--text-light);
+  opacity: 0.85;
+  margin-bottom: 18px;
+  line-height: 1.75;
+}
+
+.promise-card .story-beat { color: var(--gold); }
+.promise-card .story-list p { color: var(--text-light); opacity: 0.95; }
+
+@media (max-width: 640px) {
+  .promise-card { padding: 36px 22px; }
+}
 
 /* --------------------------------------------------------------------------
    Expansiones
