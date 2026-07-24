@@ -303,24 +303,32 @@ h1, h2, h3, h4 {
   color: var(--text-light);
   position: relative;
   overflow: hidden;
+  aspect-ratio: 2000 / 900;
 }
 
-/* Hero carousel — banners de imagen */
+/* Hero carousel — banners de imagen.
+   Los slides se apilan con position:absolute + opacity (nunca display:none):
+   varios navegadores móviles no cargan imágenes dentro de elementos ocultos
+   con display:none, lo que dejaba los banners 2-8 sin descargar. */
 .hero-slide {
-  display: none;
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .hero-slide.is-active {
-  display: block;
+  opacity: 1;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .hero-banner-img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 2000 / 900;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -920,29 +928,6 @@ h1, h2, h3, h4 {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 36px 0 8px !important;
-}
-
-.story-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin: 0 auto 48px;
-  max-width: 640px;
-}
-
-.story-divider::before,
-.story-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(107, 107, 133, 0.25);
-}
-
-.story-divider svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
 }
 
 /* Nuestra Promesa */
