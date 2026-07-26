@@ -845,8 +845,6 @@ h1, h2, h3, h4 {
 .prose p:last-child { margin-bottom: 0; }
 .prose + .prose { margin-top: 56px; }
 
-.guide-section:nth-of-type(even) { background: #FFFFFF; }
-
 /* --------------------------------------------------------------------------
    Quiénes somos — historia editorial
    -------------------------------------------------------------------------- */
@@ -1233,4 +1231,175 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
   .section { padding: 56px 0; }
   .callout { padding: 36px 22px; }
+}
+
+/* --------------------------------------------------------------------------
+   Guía TCG — Academia (Fase 1: Docs 4.1–4.10)
+   -------------------------------------------------------------------------- */
+
+/* Hero split (texto + Guardián Prismático) */
+.page-hero--split { text-align: left; }
+
+.page-hero--split .container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 36px;
+  align-items: center;
+}
+
+.page-hero--split h1 {
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  margin: 0 0 16px;
+}
+
+.page-hero--split .hero-copy p {
+  max-width: 560px;
+  margin: 0 0 14px;
+  opacity: 0.85;
+}
+
+.page-hero--split .hero-copy p:last-child { margin-bottom: 0; }
+
+.page-hero--split .hero-visual {
+  width: 100%;
+  max-width: 420px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  flex-shrink: 0;
+}
+
+.page-hero--split .hero-visual img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+@media (min-width: 860px) {
+  .page-hero--split .container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  .page-hero--split .hero-copy { flex: 1 1 480px; }
+  .page-hero--split .hero-visual { flex: 1 1 380px; margin: 0; }
+}
+
+/* Bienvenido Coleccionista */
+.welcome-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.welcome-copy p { margin-bottom: 16px; opacity: 0.85; }
+.welcome-copy p:last-child { margin-bottom: 0; }
+
+.welcome-visual img {
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 860px) {
+  .welcome-grid { flex-direction: row; gap: 56px; }
+  .welcome-copy { flex: 1 1 55%; }
+  .welcome-visual { flex: 1 1 45%; }
+}
+
+/* .story-quote reused outside "Quiénes somos" — safe on dark backgrounds
+   because the gradient text-clip replaces the fallback color. Give it room
+   when it follows a grid instead of prose. */
+.guide-section .story-quote { margin-top: 48px !important; }
+
+/* Enlace secundario hacia Productos / Expansiones */
+.guide-more { text-align: center; margin: 40px 0 0; }
+
+/* Anatomía de una carta — hotspots */
+.anatomy-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.anatomy-card {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 420 / 585;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.anatomy-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotspot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-radius: 50%;
+  border: none;
+  background: var(--navy-deep);
+  color: var(--text-light);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px var(--gradient-brand, var(--cyan)), 0 6px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hotspot:hover { transform: scale(1.12); }
+
+.hotspot.is-active {
+  background: var(--gradient-brand);
+  color: #fff;
+}
+
+.hotspot:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.anatomy-panels {
+  width: 100%;
+  max-width: 420px;
+}
+
+.anatomy-panel {
+  display: none;
+  background: #FFFFFF;
+  border: 1px solid #ECECF4;
+  border-radius: var(--radius-sm);
+  padding: 24px 26px;
+}
+
+.anatomy-panel.is-active { display: block; }
+
+.anatomy-panel-index {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--violet);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.anatomy-panel h3 { font-size: 1.15rem; margin-bottom: 8px; }
+.anatomy-panel p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+@media (min-width: 860px) {
+  .anatomy-wrap { flex-direction: row; align-items: flex-start; justify-content: center; gap: 56px; }
 }

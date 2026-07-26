@@ -70,4 +70,23 @@ document.addEventListener('DOMContentLoaded', function () {
       track.scrollBy({ left: dir * 180, behavior: 'smooth' });
     });
   });
+
+  // Hotspots (Guía TCG — Anatomía de la carta)
+  var hotspots = Array.prototype.slice.call(document.querySelectorAll('[data-hotspot]'));
+  if (hotspots.length) {
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[data-hotspot-panel]'));
+
+    hotspots.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = btn.getAttribute('data-hotspot');
+
+        hotspots.forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+
+        panels.forEach(function (panel) {
+          panel.classList.toggle('is-active', panel.getAttribute('data-hotspot-panel') === target);
+        });
+      });
+    });
+  }
 });
