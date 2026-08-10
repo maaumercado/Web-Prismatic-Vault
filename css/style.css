@@ -596,33 +596,6 @@ h1, h2, h3, h4 {
 
 .social-band h2 { margin-bottom: 28px; }
 
-.social-icons-lg {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 28px;
-}
-
-.social-icons-lg a {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1C1C38;
-  border: 1px solid rgba(245, 245, 255, 0.12);
-  transition: transform 0.18s ease, background 0.18s ease;
-}
-
-.social-icons-lg svg { width: 24px; height: 24px; fill: var(--text-light); }
-
-.social-icons-lg a:hover {
-  transform: translateY(-3px);
-  background: var(--gradient-brand);
-}
-
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
